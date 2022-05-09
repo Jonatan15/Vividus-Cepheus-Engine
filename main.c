@@ -1,8 +1,10 @@
 #include <stdio.h>
-#include <persona.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+
+#include "Persona.h"
+#include "Carreira.h"
 
 int scoreMod (int x);
 void initPersona();
