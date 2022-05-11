@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PERSONA_H
+#define PERSONA_H
 
 
 //0 de 24 carreiras
@@ -90,8 +91,8 @@ struct skill {
     int id; int level;
 };
 
-void carreerStep(struct persona x);
-void carrerApply(struct persona x);
+void carreerStep(persona x);
+void carrerApply(persona x);
 void carrerDraft();
 void carrerSurvival();
 void carrerPromotion();
@@ -100,4 +101,4 @@ void carrerReenlist();
 void carrerRetire();
 void retireBenefits();
 
-
+#endif
