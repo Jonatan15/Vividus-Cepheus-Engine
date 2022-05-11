@@ -12,14 +12,11 @@ char pseudoHex(int x);
 int main(void)
 
 {
-    int live {1};
+
     srand(time(NULL));
-    while (live == 1) 
-    {        
-        initPersona();
-        printf("Again?(1/0) ");
-        scanf("%d", live);
-    }
+
+    initPersona();
+
     return 0;
 }
 
@@ -41,23 +38,29 @@ int scoreMod(int x)
 void initPersona()
 {
     persona stdPersona;
+    persona *p = &stdPersona;
+    int live = {1};
 
-    stdPersona.str = gerarAtributo();
-    stdPersona.des = gerarAtributo();
-    stdPersona.res = gerarAtributo();
-    stdPersona.in = gerarAtributo();
-    stdPersona.edu = gerarAtributo();
-    stdPersona.car = gerarAtributo();
+    while(live <= 5){
+        p->str = gerarAtributo();
+        p->des = gerarAtributo();
+        p->res = gerarAtributo();
+        p->in = gerarAtributo();
+        p->edu = gerarAtributo();
+        p->car = gerarAtributo();
 
-    stdPersona.strH = pseudoHex(stdPersona.str);
-    stdPersona.desH = pseudoHex(stdPersona.des);
-    stdPersona.resH = pseudoHex(stdPersona.res);
-    stdPersona.inH = pseudoHex(stdPersona.in);
-    stdPersona.eduH = pseudoHex(stdPersona.edu);
-    stdPersona.carH = pseudoHex(stdPersona.car);
+        p->strH = pseudoHex(p->str);
+        p->desH = pseudoHex(p->des);
+        p->resH = pseudoHex(p->res);
+        p->inH = pseudoHex(p->in);
+        p->eduH = pseudoHex(p->edu);
+        p->carH = pseudoHex(p->car);
 
-    profilePersona(stdPersona);
-    //carrerApply(stdPersona);
+        profilePersona(stdPersona);
+        //carrerApply(stdPersona);
+        live++;
+        //scanf("%d", live);
+    }
 }
 
 void profilePersona(persona x)
@@ -126,7 +129,7 @@ void carreerStep(persona x)
 }
 
 void carrerApply(persona x)
-{    
+{
     int id{ 0 };
     printf("Select carrer to apply: ");
     //scanf_s("%i", id);
@@ -162,7 +165,7 @@ void carrerReenlist()
 
 void carrerRetire()
 {
-    
+
 }
 
 void retireBenefits()
