@@ -5,13 +5,13 @@
 //0 de 24 carreiras
 typedef struct carrer {
     int id; int term; int rank; bool basicTraining;
-};
+} carrer;
 
 typedef struct persona {
-    int str; int des; int res; int in; int edu; int car;
-    char strH; char desH; char resH; char inH; char eduH; char carH;
-    int age; int totalTerm; carrer carreira;
-};
+    carrer carreira; char name[15];int str; int des; int res; int Int; int edu; int car;
+    char strH; char desH; char resH; char intH; char eduH; char carH;
+    int age; int totalTerm; 
+} persona;
 
 //Para o RNG
 enum skills {
@@ -85,7 +85,7 @@ enum skills {
     wheeled
 };
 
-enum carrerPool { Drifter, AirForce, Marine, Navy, SpaceNavy, Scout, Army }; //Apenas drifeter e as carreiras para draft
+enum carrerPool { Drifter, AirForce, Marine, Navy, SpaceNavy, Scout, Army }; //Apenas drifter e as carreiras para draft
 
 struct skill {
     int id; int level;

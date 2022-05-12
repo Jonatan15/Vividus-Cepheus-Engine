@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 #include "Persona.h"
 
 int scoreMod(int x);
-void initPersona();
+persona initPersona();
 void profilePersona(persona x);
 int gerarAtributo(); //2d6
 char pseudoHex(int x);
@@ -14,9 +15,10 @@ int main(void)
 {
 
     srand(time(NULL));
-
-    initPersona();
-
+    {
+        persona person = initPersona();
+        profilePersona(person);
+    }
     return 0;
 }
 
@@ -35,40 +37,41 @@ int scoreMod(int x)
     return mod;
 }
 
-void initPersona()
+persona initPersona()
 {
     persona stdPersona;
     persona *p = &stdPersona;
-    int live = {1};
+    
+    strcpy(p->name, "Nome");
+    p->age = {18};
+    
+    p->str = gerarAtributo();
+    p->des = gerarAtributo();
+    p->res = gerarAtributo();
+    p->Int = gerarAtributo();
+    p->edu = gerarAtributo();
+    p->car = gerarAtributo();
 
-    while(live <= 5){
-        p->str = gerarAtributo();
-        p->des = gerarAtributo();
-        p->res = gerarAtributo();
-        p->in = gerarAtributo();
-        p->edu = gerarAtributo();
-        p->car = gerarAtributo();
+    p->strH = pseudoHex(p->str);
+    p->desH = pseudoHex(p->des);
+    p->resH = pseudoHex(p->res);
+    p->intH = pseudoHex(p->Int);
+    p->eduH = pseudoHex(p->edu);
+    p->carH = pseudoHex(p->car);
 
-        p->strH = pseudoHex(p->str);
-        p->desH = pseudoHex(p->des);
-        p->resH = pseudoHex(p->res);
-        p->inH = pseudoHex(p->in);
-        p->eduH = pseudoHex(p->edu);
-        p->carH = pseudoHex(p->car);
-
-        profilePersona(stdPersona);
-        //carrerApply(stdPersona);
-        live++;
-        //scanf("%d", live);
-    }
+    //profilePersona(stdPersona);
+    //carrerApply(stdPersona);
+    //scanf("%d", live);
+    return stdPersona;
 }
 
 void profilePersona(persona x)
 {
 
-    printf("UPP: %d|%d|%d|%d|%d|%d \n", x.str, x.des, x.res, x.in, x.edu, x.car);
-    printf("Hex: %c%c%c%c%c%c \n", x.strH, x.desH, x.resH, x.inH, x.eduH, x.carH);
-    printf("Mod: %d|%d|%d|%d|%d|%d \n", scoreMod(x.str), scoreMod(x.des), scoreMod(x.res), scoreMod(x.in), scoreMod(x.edu), scoreMod(x.car));
+    printf("Nome: %s Idade: %d \n", x.name, x.age);
+    printf("UPP: %c%c%c%c%c%c \n", x.strH, x.desH, x.resH, x.intH, x.eduH, x.carH);    
+    printf("Mod: %d|%d|%d|%d|%d|%d \n", scoreMod(x.str), scoreMod(x.des), scoreMod(x.res), scoreMod(x.Int), scoreMod(x.edu), scoreMod(x.car));
+    printf("Val: %d|%d|%d|%d|%d|%d \n", x.str, x.des, x.res, x.Int, x.edu, x.car);
 
 }
 
